@@ -1,0 +1,9 @@
+c:\users\jose-pc\documents\visual studio 2015\Projects\OPSYS\OPSYS\bin\Debug\OPSYS.exe.config
+c:\users\jose-pc\documents\visual studio 2015\Projects\OPSYS\OPSYS\bin\Debug\OPSYS.exe
+c:\users\jose-pc\documents\visual studio 2015\Projects\OPSYS\OPSYS\bin\Debug\OPSYS.pdb
+c:\users\jose-pc\documents\visual studio 2015\Projects\OPSYS\OPSYS\obj\Debug\OPSYS.csprojResolveAssemblyReference.cache
+c:\users\jose-pc\documents\visual studio 2015\Projects\OPSYS\OPSYS\obj\Debug\OPSYS.Form1.resources
+c:\users\jose-pc\documents\visual studio 2015\Projects\OPSYS\OPSYS\obj\Debug\OPSYS.Properties.Resources.resources
+c:\users\jose-pc\documents\visual studio 2015\Projects\OPSYS\OPSYS\obj\Debug\OPSYS.csproj.GenerateResource.Cache
+c:\users\jose-pc\documents\visual studio 2015\Projects\OPSYS\OPSYS\obj\Debug\OPSYS.exe
+c:\users\jose-pc\documents\visual studio 2015\Projects\OPSYS\OPSYS\obj\Debug\OPSYS.pdb
