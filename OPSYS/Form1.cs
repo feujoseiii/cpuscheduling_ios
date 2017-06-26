@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -54,7 +55,7 @@ namespace OPSYS
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            psp();
+            rr();
         }
 
         private void sjnnp()
@@ -178,26 +179,18 @@ namespace OPSYS
             Console.WriteLine(total_burst);
 
             int total = 0;
-            for (int i = 0; i < total_burst; i++)
-            {
-                if (processes.Count > 0)
-                {
+            for (int i = 0; i < total_burst; i++){
+                if (processes.Count > 0){
                     var result = processes.Where(Process => Process.arrivalTime <= i).ToList();
                     var orderedResult = result.OrderBy(Process => Process.priorityLevel).ToList();
                     var firstResult = orderedResult.FirstOrDefault();
-                    if (firstResult != null)
-                    {
-                        if (firstResult.remainingTime == 0)
-                        {
+                    if (firstResult != null){
+                        if (firstResult.remainingTime == 0){
                             processes.Remove(firstResult);
-                        }
-                        else {
-                            if (firstResult.remainingTime == 1)
-                            {
+                        }else {
+                            if (firstResult.remainingTime == 1){
                                 //end time
-                            }
-                            else if (firstResult.remainingTime == firstResult.burstTime)
-                            {
+                            }else if (firstResult.remainingTime == firstResult.burstTime){
                                 //started
                             }
                             Console.Write("[{0}]", firstResult.processName);
@@ -206,14 +199,51 @@ namespace OPSYS
                         }
                     }
                 }
-                if (i == total_burst - 1)
-                {
-                    if (total < total_burst)
-                    {
+                if (i == total_burst - 1){
+                    if (total < total_burst){
                         i -= total_burst - total;
                     }
                 }
             }
+        }
+
+        private void rr() {
+            int total_burst = 0;
+            int quantum = 3;
+            List<Process> processes = new List<Process>();
+            processes.Add(new Process("A", 0, 5));
+            processes.Add(new Process("B", 2, 3));
+            processes.Add(new Process("C", 1, 8));
+            processes.Add(new Process("D", 3, 6));
+            foreach (Process p in processes) total_burst += p.burstTime;
+            var sortedProcess = processes.OrderBy(Process => Process.arrivalTime).ToList();
+
+            while (sortedProcess.Count > 0) {
+                var current_process = sortedProcess.First();
+                if (current_process.remainingTime == 0) {
+                    sortedProcess.Remove(current_process);
+                } else {
+                    int total_deducted = 0;
+                    for (int i = 0; i < quantum; i++) {
+                        if (current_process.remainingTime > 0) {
+                            total_deducted++;
+                            current_process.remainingTime--;
+                            Console.Write("[{0}]", current_process.processName);
+                        }
+                    }
+                    sortedProcess.Remove(current_process);
+                    if (current_process.remainingTime > 0) {
+                        sortedProcess.Add(new Process(
+                            current_process.processName, 
+                            current_process.arrivalTime, 
+                            current_process.burstTime - total_deducted
+                            ));
+                    }
+                }
+            }
+
+
+
         }
 
     }
